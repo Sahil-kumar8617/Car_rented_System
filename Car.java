@@ -13,22 +13,35 @@ class Car {
        this.CarModel=CarModel;
        this.CarBrand=CarBrand;
        this.BasePrice=BasePrice;
-       this.Availability=Availability;
+       this.Availability=true;
 
     }
-    public void getDetail(){
+    public void getDetail(){ // to get all the deail by one click 
         System.out.println(CarID);
         System.out.println(CarModel);
         System.out.println(CarBrand);
         System.out.println(BasePrice);
         System.out.println(Availability);
+    }
 
-        
 
+    public int getCarID(){
+        return CarID;
     }
     
-
-
+    public String  getCarModel(){
+        return CarModel;
+    }
+    public String  getCarBrand(){
+        return CarBrand;
+    }
+    public int getCBasePrice(){
+        return BasePrice;
+    }
+    public Boolean getAvailability(){
+        return Availability;
+    }
+    
 
 
 
