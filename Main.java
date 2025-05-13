@@ -8,14 +8,14 @@ class Car {
     private String CarModel;
     private String CarBrand;
     private int BasePrice;
-    private Boolean Availability;
+    private Boolean isAvaialbale;
 
     public void setDetail(int CarID, String CarModel,String CarBrand,Integer BasePrice,Boolean Availability){
        this.CarID=CarID;
        this.CarModel=CarModel;
        this.CarBrand=CarBrand;
        this.BasePrice=BasePrice;
-       this.Availability=true;
+       this.isAvaialbale=true;
 
     }
     public void getDetail(){ // to get all the deail by one click 
@@ -23,7 +23,7 @@ class Car {
         System.out.println(CarModel);
         System.out.println(CarBrand);
         System.out.println(BasePrice);
-        System.out.println(Availability);
+        System.out.println(isAvaialbale);
     }
 
 
@@ -40,11 +40,14 @@ class Car {
     public int getCBasePrice(){
         return BasePrice;
     }
-    public Boolean getAvailability(){
-        return Availability;
+    public Boolean isAvailabel(){
+        return isAvaialbale;
     }
     public void carRent(){
-        Availability=false;
+       isAvaialbale=false;
+    }
+    public void returnCar(){
+        isAvaialbale=true;
     }
 
     public double CalculatePrice(){
@@ -83,6 +86,78 @@ class Car {
     }
 
     
+
+}
+
+class rental {
+    private Car car;
+    private Customer customer;
+    private int days;
+
+    public rental(Car car,Customer customer,int days){
+     this.car=car;
+     this.customer=customer;
+     this.days=days;
+    }
+
+    
+
+    public Car getCar(){
+        return car;
+
+    }
+    public Customer getCustomer(){
+        return customer;
+    }
+    public int getdays(){
+        return days;
+    }
+
+}
+
+class carRentalSystem{
+    private ArrayList<Car> cars;
+    private ArrayList<Customer>customers;
+    private ArrayList<rental>rentals; 
+
+    public carRentalSystem(){ // empty arraylist to store the each objects value
+        cars=new ArrayList<>();
+        customers=new ArrayList<>();
+        rentals=new ArrayList<>();
+
+
+    }
+
+    public void addCar(Car car){
+        cars.add(car);
+    }
+
+    public void addCustomer( Customer customer){
+        customers.add(customer);
+    }
+
+    public void rentCar(Car car, Customer customer,int days){
+    if(car.isAvailabel()){
+        car.carRent();
+        rentals.add(new rental(car,customer,days));
+    }
+    else{
+        System.out.println("car is not available for rent.");
+    }
+
+    public void returnCar(Car car){
+        
+
+
+    }
+
+
+
+
+
+    }
+
+
 
 }
 
