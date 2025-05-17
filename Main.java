@@ -198,17 +198,17 @@ class CarRentalSystem{
                 System.out.println("enter the car id you want to rent:");
                 String customerId =sc.nextLine();
                 System.out.println("enter aadhar number:");
-                int aadhar =sc.nextInt();
+                long aadhar =sc.nextLong();
 
                 System.out.println("enter mobile number:");
-                int mobile =sc.nextInt();
+                long mobile =sc.nextLong();
                 sc.nextLine();
 
                 System.out.println("enter the number of days for rent:");
                 int rentalDays=sc.nextInt();
                 sc.nextLine();
 
-                Customer newCustomer=new Customer(customerName, rentalDays, aadhar, mobile)
+                Customer newCustomer=new Customer(customerName, rentalDays, choice, rentalDays);
                
                 addCustomer(newCustomer);
 
@@ -289,7 +289,7 @@ public class Main{
     public static void main(String[] args) {
         CarRentalSystem rentalSystem = new CarRentalSystem();
 
-        Car car1 = new Car("C001", "KiA", "KTM", 15000, true) // Different base price per day for each car
+        Car car1 = new Car("C001", "KiA", "KTM", 15000, true); // Different base price per day for each car
         Car car2 = new Car("C002","i20","Hyundai",12000,true);
         Car car3 = new Car("C003","NExon","TATA",20000,true);
 
