@@ -5,13 +5,13 @@ import java.util.List;
 
 class Car {
     Scanner sc=new Scanner(System.in);
-    private int CarID;
+    private String CarID;
     private String CarModel;
     private String CarBrand;
-    private int BasePrice;
+    private double BasePrice;
     private Boolean isAvailable;
 
-    public void car(int CarID, String CarModel,String CarBrand,Integer BasePrice,Boolean Availability){
+    public  Car(String CarID, String CarModel,String CarBrand,Integer BasePrice,Boolean Availability){
        this.CarID=CarID;
        this.CarModel=CarModel;
        this.CarBrand=CarBrand;
@@ -28,7 +28,7 @@ class Car {
     }
 
 
-    public int getCarID(){
+    public String getCarID(){
         return CarID;
     }
     
@@ -38,7 +38,7 @@ class Car {
     public String  getCarBrand(){
         return CarBrand;
     }
-    public int getCBasePrice(){
+    public double getCBasePrice(){
         return BasePrice;
     }
     public Boolean isAvailabel(){
@@ -73,7 +73,7 @@ class Car {
     this.CustomerAadharCard=CustomerAadharCard;
     this.CustomerMobileNumber=CustomerMobileNumber;
    }
-    public String CustomerName(){
+    public String getCustomerName(){
         return CustomerName;
     }
     public int CustomerID(){
@@ -116,12 +116,12 @@ class Rental {
 
 }
 
-class carRentalSystem{
+class CarRentalSystem{
     private ArrayList<Car> cars;
     private ArrayList<Customer>customers;
     private ArrayList<Rental>rentals; 
 
-    public carRentalSystem(){ // empty arraylist to store the each objects value
+    public CarRentalSystem(){ // empty arraylist to store the each objects value
         cars=new ArrayList<>();
         customers=new ArrayList<>();
         rentals=new ArrayList<>();
@@ -139,7 +139,7 @@ class carRentalSystem{
     }
 
     public void rentCar(Car car, Customer customer,int days){
-    if(car.isAvailable()){
+    if(car.isAvailabel()){
         car.carRent();
         rentals.add(new Rental(car,customer,days));
     }
@@ -170,6 +170,7 @@ class carRentalSystem{
 
     public void menu(){ // menu which will be the first interface which is being seen by the user to move forward in car rental system.
         Scanner sc=new Scanner(System.in);
+        
         while(true){ // this will work in a way that until the user did not choose the 3 means Exit button these option will be there in his screen every time for choosing any of the features.
 
             System.out.println("******* Car rental System *******");
@@ -188,34 +189,42 @@ class carRentalSystem{
 
                 System.out.println("Available cars:"); // this will  show the deatil of the cars which is present in the garage
                 for(Car car :cars){
-                    if(car.isAvailable()){
+                    if(car.isAvailabel()){
                         System.out.println(car.getCarID()+"  "+ car.getCarBrand()+" "+car.getCarModel());
 
                     }
                 }
 
                 System.out.println("enter the car id you want to rent:");
-                String carID=sc.nextLine();
+                String customerId =sc.nextLine();
+                System.out.println("enter aadhar number:");
+                int aadhar =sc.nextInt();
+
+                System.out.println("enter mobile number:");
+                int mobile =sc.nextInt();
+                sc.nextLine();
 
                 System.out.println("enter the number of days for rent:");
                 int rentalDays=sc.nextInt();
                 sc.nextLine();
-                public Customer(String Customername , int CustomerID,int CustomerAadharCard,int CustomerMobileNumber)
+
+                Customer newCustomer=new Customer(customerName, rentalDays, aadhar, mobile)
+               
                 addCustomer(newCustomer);
 
                 Car selectedCar = null;
                 for (Car car : cars) {
-                    if (car.getCarId().equals(carId) && car.isAvailable()) {
+                    if (car.getCarID().equals(customerId) && car.isAvailabel()) {
                         selectedCar = car;
                         break;
                     }
                 }
 
                 if (selectedCar != null) {
-                    double totalPrice = selectedCar.calculatePrice(rentalDays);
+                    double totalPrice = selectedCar.CalculatePrice();
                     System.out.println("\n== Rental Information ==\n");
-                    System.out.println("Customer ID: " + newCustomer.getCarId());
-                    System.out.println("Customer Name: " + newCustomer.getcustomerName());
+                    System.out.println("Customer ID: " + newCustomer.CustomerID());
+                    System.out.println("Customer Name: " + newCustomer.getCustomerName());
                     System.out.println("Car: " + selectedCar.getCarBrand() + " " + selectedCar.getCarModel());
                     System.out.println("Rental Days: " + rentalDays);
                     System.out.printf("Total Price: $%.2f%n", totalPrice);
@@ -239,7 +248,7 @@ class carRentalSystem{
 
                 Car carToReturn = null;
                 for (Car car : cars) {
-                    if (car.getCarID().equals(carId) && !car.isAvailable()) {
+                    if (car.getCarID().equals(carId) && !car.isAvailabel()) {
                         carToReturn = car;
                         break;
                     }
@@ -256,7 +265,7 @@ class carRentalSystem{
 
                     if (customer != null) {
                         returnCar(carToReturn);
-                        System.out.println("Car returned successfully by " + customer.getName());
+                        System.out.println("Car returned successfully by " );
                     } else {
                         System.out.println("Car was not rented or rental information is missing.");
                     }
@@ -278,11 +287,12 @@ class carRentalSystem{
 
 public class Main{
     public static void main(String[] args) {
-        carRentalSystem rentalSystem = new carRentalSystem();
+        CarRentalSystem rentalSystem = new CarRentalSystem();
 
-        Car car1 = new car("C001", "Toyota", "Camry", 60.0); // Different base price per day for each car
-        Car car2 = new car("C002", "Honda", "Accord", 70.0);
-        Car car3 = new car("C003", "Mahindra", "Thar", 150.0);
+        Car car1 = new Car("C001", "KiA", "KTM", 15000, true) // Different base price per day for each car
+        Car car2 = new Car("C002","i20","Hyundai",12000,true);
+        Car car3 = new Car("C003","NExon","TATA",20000,true);
+
         rentalSystem.addCar(car1);
         rentalSystem.addCar(car2);
         rentalSystem.addCar(car3);
