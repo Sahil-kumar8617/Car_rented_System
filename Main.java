@@ -293,6 +293,8 @@ public class Main{
         Car car2 = new Car("C002","i20","Hyundai",12000,true);
         Car car3 = new Car("C003","NExon","TATA",20000,true);
         Car car4 = new Car("C004","Verna","Hyundai",9100,true);
+        Car car5 = new Car("C005","maruti suzuki","Suzuki",100,true);
+        
 
         rentalSystem.addCar(car1);
         rentalSystem.addCar(car2);
