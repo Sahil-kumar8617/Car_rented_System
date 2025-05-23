@@ -1,4 +1,4 @@
-// Project based on the all the OOPS concept 
+                                      // Project based on the all the OOPS concept 
 import java.util.*;
 import java.util.Scanner;
 import java.util.List;
@@ -51,10 +51,9 @@ class Car {
         isAvailable=true;
     }
 
-    public double CalculatePrice(){
-        System.out.println("enter Number of days you need car for rent:");
-        int days=sc.nextInt();
-        return days*BasePrice; // this will calculate the price of the rent car based on the days a customer wanted to rent 
+    public double CalculatePrice(int rentalDays){
+        
+        return rentalDays*BasePrice; // this will calculate the price of the rent car based on the days a customer wanted to rent 
 
 
 
@@ -204,7 +203,7 @@ class CarRentalSystem{
                 long mobile =sc.nextLong();
                 sc.nextLine();
 
-                System.out.println("enter the number of days for rent:");
+                System.out.println("enter the number of days you need car for rent:");
                 int rentalDays=sc.nextInt();
                 sc.nextLine();
 
@@ -221,7 +220,8 @@ class CarRentalSystem{
                 }
 
                 if (selectedCar != null) {
-                    double totalPrice = selectedCar.CalculatePrice();
+              
+                    double totalPrice = selectedCar.CalculatePrice(rentalDays);
                     System.out.println("\n== Rental Information ==\n");
                     System.out.println("Customer ID: " + newCustomer.CustomerID());
                     System.out.println("Customer Name: " + newCustomer.getCustomerName());
@@ -299,6 +299,8 @@ public class Main{
         rentalSystem.addCar(car1);
         rentalSystem.addCar(car2);
         rentalSystem.addCar(car3);
+        rentalSystem.addCar(car4);
+        rentalSystem.addCar(car5);
 
         rentalSystem.menu();
         
