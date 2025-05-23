@@ -292,6 +292,7 @@ public class Main{
         Car car1 = new Car("C001", "KiA", "KTM", 15000, true); // Different base price per day for each car
         Car car2 = new Car("C002","i20","Hyundai",12000,true);
         Car car3 = new Car("C003","NExon","TATA",20000,true);
+        Car car4 = new Car("C004","Verna","Hyundai",9100,true);
 
         rentalSystem.addCar(car1);
         rentalSystem.addCar(car2);
